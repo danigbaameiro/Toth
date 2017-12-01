@@ -1,4 +1,5 @@
 interfaces(){
+  service network-manager restart
   iwconfig | grep "802.11" | cut -d " " -f1 > interfaces_toth
   clear
   interface_out=`sed -n 1p interfaces_toth`
@@ -25,8 +26,6 @@ detect(){
   best_node=`grep $best senial | cut -d "," -f 2` #nodo con mejor señal
 }
 connect(){
-  echo "conectar"
-  service network-manager restart
   nmcli device wifi connect $best_node password Password_Wifi_Here
 }
 clean(){

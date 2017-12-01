@@ -1,13 +1,13 @@
 #!/bin/bash
 
-install(){
+install(){ #instalar paquetes necesarios
   git clone https://github.com/oblique/create_ap
   cd create_ap
   make install
   apt-get install hostapd
 }
 
-showInterfaces(){
+showInterfaces(){ #mostrar interfaces
   iwconfig | grep "802.11" | cut -d " " -f1 > interfaces_toth
   clear
   echo -e "\e[1;33m :::::::::::::::::: INTERFACES WIFI ::::::::::::::::: \e[0m"
@@ -15,7 +15,40 @@ showInterfaces(){
   echo -e "\e[1;33m :::::::::::::::::::::::::::::::::::::::::::::::::::: \e[0m"
 }
 
-createAP(){
+findExistingNodes(){ #encontrar nodos existentes
+  iwconfig | grep "802.11" | cut -d " " -f1 > exist #interfaces wifi
+  clear
+
+  #suponemos que la primera existente permite modo monitor
+  interf_out=`sed -n 1p exist`
+  airmon-ng start $interf_out > monmode
+
+  #interfaz en modo monitor
+  mon_interface=`grep "monitor mode" monmode | cut -d " " -f9 | cut -d "]" -f2 | cut -d ")" -f1`
+
+  #escaneo de redes próximas
+  { airodump-ng $mon_interface -w capture --write-interval 10 -o csv 2>> output.txt; } &
+  sleep 10
+
+  #matamos el proceso para poder parar el escaneo de airodump-ng
+  pkill airodump-ng
+
+  grep nodo capture*.csv | cut -d "," -f 14 > senial
+  sed -i 's/ //g' senial
+  airmon-ng stop $mon_interface
+
+  nextNode
+}
+nextNode(){
+  #buscamos el último nodo generado
+  last_node=`cat senial | sort -n | tail -n1`
+  number_last_node=${last_node:4}
+  number_next_node=$((number_last_node+1))
+  #calculamos el siguiente nodo
+  next_node="nodo${number_next_node}"
+}
+createAP(){ #crear un punto de acceso
+  findExistingNodes
   iwconfig | grep "802.11" | cut -d " " -f1 > interfaces_toth
   clear
 
@@ -25,8 +58,6 @@ createAP(){
   while [[ $interface_in != $interface_out && $interface_in != x ]]
   do
 
-    echo $interface_in
-    echo $interface_out
     echo -e "\e[1;33m :::::::::::::::::: CREAR AP ::::::::::::::::: \e[0m"
     if [[ $interface_in != $interface_out && $interface_in != 0 ]]
     then
@@ -44,31 +75,31 @@ createAP(){
   #cat interfaces_toth | grep "wlan" | sed -n 2p
   if [[ $interface_in == $interface_out ]]
   then
-    create_ap -n $interface_in nodo1 Password_Wifi_Here
+    create_ap -n $interface_in $next_node Password_Wifi_Here
   fi
 
 }
 
 clean(){
   rm *_toth
+  rm monmode
+  rm *.csv
+  rm exist
+  rm output.txt
   clear
 }
 
 menu(){
   clear
   menu=0
-  while [ $menu != "i" ]
+  while [ $menu != "e" ]
   do
     echo -e "\e[1;31m ==================== MENU TOTH ==================== \e[0m"
     echo -e "\e[0;31m a. Instalación de paquetes (Necesaria conexíon internet) \e[0m"
     echo -e "\e[0;31m b. Mostrar interfaces wifi\e[0m"
     echo -e "\e[0;31m c. Crear AP \e[0m"
-    echo -e "\e[0;31m d. Conectarse a AP \e[0m"
-    echo -e "\e[0;31m e. \e[0m"
-    echo -e "\e[0;31m f. \e[0m"
-    echo -e "\e[0;31m g. \e[0m"
-    echo -e "\e[0;31m h. Limpiar \e[0m"
-    echo -e "\e[0;31m i. Salir \e[0m"
+    echo -e "\e[0;31m d. Limpiar \e[0m"
+    echo -e "\e[0;31m e. Salir \e[0m"
     echo -e "\e[1;31m==================================================== \e[0m"
     echo -e "\e[1;34m Elige una de las opciones anteriores: \e[0m"
     read menu_in
@@ -76,12 +107,8 @@ menu(){
       a) install ;;
       b) showInterfaces ;;
       c) createAP ;;
-      d) showInterfaces ;;
-      e) showInterfaces ;;
-      f) showInterfaces ;;
-      g) showInterfaces ;;
-      h) clean ;;
-      i) echo "Hasta pronto" ;;
+      d) clean ;;
+      e) echo "Hasta pronto" ;;
       *) echo No has introducido una de las opciones anteriores ;;
     esac
 
