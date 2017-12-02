@@ -12,19 +12,10 @@ You need to install node and npm
 
 2. Install [npm and Node.js](https://nodejs.org/en/download/)
 ```
->> Archlinux
-$ sudo pacman -S nodejs npm
-
->> Fedora
-$ sudo dnf groupinstall 'Development Tools'
-$ sudo dnf install nodejs
-
 >> Debian, Ubuntu
 $ sudo apt-get install build-essential
 $ sudo apt-get install nodejs
-
->> Mac (con Homebrew)
-$ brew install nodejs
+$ sudo apt-get install aircrack-ng
 ```
 
 ### Installing
