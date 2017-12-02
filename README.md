@@ -62,7 +62,6 @@ para la creación de los puntos de acceso.
 Para crear los puntos de acceso, es necesario que no haya ninguna interfaz en modo monitor,
 habrá que seleccionar la opción " c) ". 
 
-And repeat
 
 ```
 until finished
