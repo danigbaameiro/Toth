@@ -44,7 +44,23 @@ Ahora tendremos en nuestra carpeta principal dos nuevas carpetas, user y nodos.
 #### 2. Fase 2:
 Dentro de la carpeta nodos estan las carpetas que irán a cada nodo. Cogemos una carpeta, cortamos, y pegamos dentro del nodo que deseemos usar.
 
-A continuación, ...
+A continuación, habrá que crear un punto de acceso para cada nodo, para que pueda haber comunicación entre nodo-nodo y cliente-nodo.  
+
+Ejecutaremos el script create_ap.sh
+
+```
+sudo ./create_ap.sh 
+```
+
+Mostrará el siguiente menú: 
+
+---------------------> imagen
+
+Hay que iniciar antes de nada la opción " a) " para poder instalar los paquetes necesarios 
+para la creación de los puntos de acceso.
+
+Para crear los puntos de acceso, es necesario que no haya ninguna interfaz en modo monitor,
+habrá que seleccionar la opción " c) ". 
 
 And repeat
 
