@@ -37,6 +37,10 @@ Vemos que muestra dos opciones, start o help, ejecutaremos start:
 ```
 Ahora tendremos en nuestra carpeta principal dos nuevas carpetas, user y nodos.
 
+**Lo que hemos hecho es dar a cada nodo todo lo que debería poseer y dar al usuario lo que necesita para la conexión. 
+**Se han utilizado las herramientas token_gen.sh para la generación de las claves publicas y privadas
+
+
 2. Fase 2:
 Dentro de la carpeta nodos estan las carpetas que irán a cada nodo. Cogemos una carpeta, cortamos, y pegamos dentro del nodo que deseemos usar.
 
@@ -49,7 +53,8 @@ until finished
 ```
 3. Fase 3:
 
-End with an example of getting some data out of the system or using it for a little demo
+Trasladaremos al usuario la carpeta user. Esta carpeta le servirá para poder descifrar el id con el que se conectará al dron.
+
 
 ## Probando la aplicación
 ** Todo lo que se debe desarrollar **
