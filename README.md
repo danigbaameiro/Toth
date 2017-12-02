@@ -29,6 +29,12 @@ $ brew install nodejs
 
 ### Installing
 
+El proceso de instalación se divide en varias fases:
+
+1. Fase 1:
+Con esta fase buscamos desplegar todo el equipamiento necesario que tendrán tanto los usuarios de la red de telecomunicaciones como los drones. De tal forma que tras ejecutar el script solo habrá que copiar y pegar en los distintos dispositivos.
+
+Ejecutaremos el script config.sh
 ```
 Give the example
 ```
