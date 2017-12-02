@@ -6,46 +6,42 @@ export RED='\033[1;91m'
 export RESETCOLOR='\033[1;00m'
 
 function nodo {
-	echo "Funcion nodo"
+	echo "Comando deshabilitado"
 	# Change this word
 	
-	DATE=$(date +'%s')
+	#DATE=$(date +'%s')
 	
-	echo "Comprobando si existen las claves publica y privada..."
-	
+	#echo "Comprobando si existen las claves publica y privada..."
 	
 	## Comprueba, sino ejecuta otra cosa	
 	
 	
 	# Sacamos las direcciones MAC
-	MACNAME=$(/sbin/ifconfig |grep ether |awk '{ print $2 ";" }' |tr -d '\n')
+	#MACNAME=$(/sbin/ifconfig |grep ether |awk '{ print $2 ";" }' |tr -d '\n')
 
-	DIFERENCIA="nodo_"$MACNAME	
+	#DIFERENCIA="nodo_"$MACNAME	
 
-	FRASE=$(echo -e '"{"username":'`hostname`',"timestamp":'$DATE', "node":'$DIFERENCIA'}"')
+	#FRASE=$(echo -e '"{"username":'`hostname`',"timestamp":'$DATE', "node":'$DIFERENCIA'}"')
 
-	echo $FRASE
+	#echo $FRASE
 
-	cd keyFolder
+	#cd keyFolder
 	#ENCRYPT=$(echo $FRASE | openssl aes-256-cbc -a -salt -k $CONTRASENA)
-	ENCRYPT=$(echo $FRASE | openssl rsautl -encrypt -pubin -inkey public_key.pem -out >(base64))
+	#ENCRYPT=$(echo $FRASE | openssl rsautl -encrypt -pubin -inkey public_key.pem -out >(base64))
 	
 
 	# DECRYPT=$(echo $ENCRYPT | openssl aes-256-cbc -a -d -salt -k $CONTRASENA)
-	DECRYPT=$(openssl rsautl -decrypt -inkey private_key.pem -in <(echo "$ENCRYPT" | base64 -d))
+	#DECRYPT=$(openssl rsautl -decrypt -inkey private_key.pem -in <(echo "$ENCRYPT" | base64 -d))
 	
-	cd ..
+	#cd ..
 
-	echo -e "Encriptado: $ENCRYPT"
-	echo -e "Desencriptado: $DECRYPT"
+	#echo -e "Encriptado: $ENCRYPT"
+	#echo -e "Desencriptado: $DECRYPT"
 }
 
 function dron {
-	echo "Funcion dron"
+	echo "Comando deshabilitado"
 	# Change this word
-
-	
-
 }
 
 function key {
@@ -67,6 +63,13 @@ For Asymmetric encryption you must first generate your private key and extract t
 	echo "Claves creadas! :)"
 }
 
+function help {
+	echo -e "
+$GREEN Token_gen provee mediante el comando key una clave publica y una clave privada haciendo uso de openssl mediante algoritmo RSA guardando dichas claves en la carpeta keyFolder.
+
+Las opciones dron y nodo estan deshabilitadas$RESETCOLOR"
+}
+
 case "$1" in
 	nodo)
 		nodo
@@ -77,14 +80,17 @@ case "$1" in
 	key)
 		key
 	;;
+	help)
+		help
+	;;
 *)
 
 echo -e "
 Cybercamp Token Generator (v 0.0)
 	Developed by Daniel \"Sawyer\" Garcia <dagaba13@gmail.com>
-
+				 Miriam \"Loo9o\" Tendero <miriamte@ucm.es>
 $RED┌──[$GREEN$USER$YELLOW@$BLUE`hostname`$RED]─[$GREEN$PWD$RED]
-$RED└──╼ \$$GREEN"" token_gen $RED{$GREEN""nodo$RED|$GREEN""dron""}
+$RED└──╼ \$$GREEN"" token_gen $RED{$GREEN""nodo$RED|$GREEN""dron""$RED|$GREEN""key""$RED|$GREEN""help""$RED}
 
 $RED nodo$BLUE -$GREEN Create a token for nodes
 $RED dron$BLUE -$GREEN Create a token for users 
