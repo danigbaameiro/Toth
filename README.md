@@ -62,12 +62,18 @@ para la creación de los puntos de acceso.
 Para crear los puntos de acceso, es necesario que no haya ninguna interfaz en modo monitor,
 habrá que seleccionar la opción " c) ". 
 
-A continuación ejecutaremos el servidor de node:
+A continuación ejecutaremos el servidor de node. Para que pueda funcionar, dentro de la carpeta nodeServer/chat-example, ejecutaremos:
 
 ```
-node 
+npm install
+```
+Tras esto se instalaran todos los modulos necesarios. Ahora ya podemos ejecutar el servidor:
+
+```
+node index.js 
 ```
 
+<img src="https://image.ibb.co/b9ZVeb/server.png">
 
 #### 3. Fase 3:
 
