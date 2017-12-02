@@ -37,8 +37,8 @@ Vemos que muestra dos opciones, start o help, ejecutaremos start:
 ```
 Ahora tendremos en nuestra carpeta principal dos nuevas carpetas, user y nodos.
 
-**Lo que hemos hecho es dar a cada nodo todo lo que debería poseer y dar al usuario lo que necesita para la conexión. 
-**Se han utilizado las herramientas token_gen.sh para la generación de las claves publicas y privadas
+**Lo que hemos hecho es dar a cada nodo todo lo que debería poseer y dar al usuario lo que necesita para la conexión.** 
+**Se han utilizado las herramientas token_gen.sh para la generación de las claves publicas y privadas**
 
 
 #### 2. Fase 2:
@@ -62,10 +62,13 @@ para la creación de los puntos de acceso.
 Para crear los puntos de acceso, es necesario que no haya ninguna interfaz en modo monitor,
 habrá que seleccionar la opción " c) ". 
 
+A continuación ejecutaremos el servidor de node:
 
 ```
-until finished
+node 
 ```
+
+
 #### 3. Fase 3:
 
 Trasladaremos al usuario la carpeta user. Esta carpeta le servirá para poder descifrar el id con el que se conectará al dron.
