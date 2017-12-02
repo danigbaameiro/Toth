@@ -22,7 +22,7 @@ $ sudo apt-get install aircrack-ng
 
 El proceso de instalación se divide en varias fases:
 
-1. Fase 1:
+#### 1. Fase 1:
 Con esta fase buscamos desplegar todo el equipamiento necesario que tendrán tanto los usuarios de la red de telecomunicaciones como los drones. De tal forma que tras ejecutar el script solo habrá que copiar y pegar en los distintos dispositivos.
 
 <img src="https://ibb.co/mz8yzb">
@@ -41,7 +41,7 @@ Ahora tendremos en nuestra carpeta principal dos nuevas carpetas, user y nodos.
 **Se han utilizado las herramientas token_gen.sh para la generación de las claves publicas y privadas
 
 
-2. Fase 2:
+#### 2. Fase 2:
 Dentro de la carpeta nodos estan las carpetas que irán a cada nodo. Cogemos una carpeta, cortamos, y pegamos dentro del nodo que deseemos usar.
 
 A continuación, ...
@@ -51,7 +51,7 @@ And repeat
 ```
 until finished
 ```
-3. Fase 3:
+#### 3. Fase 3:
 
 Trasladaremos al usuario la carpeta user. Esta carpeta le servirá para poder descifrar el id con el que se conectará al dron.
 
