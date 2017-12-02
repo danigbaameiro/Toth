@@ -1,6 +1,22 @@
 #!/bin/bash
 
-echo -e ""
+export BLUE='\033[1;94m'
+export GREEN='\033[1;92m'
+export RED='\033[1;91m'
+export RESETCOLOR='\033[1;00m'
+
+echo -e "$BLUE
+
+████████╗ ██████╗ ████████╗██╗  ██╗
+╚══██╔══╝██╔═══██╗╚══██╔══╝██║  ██║
+   ██║   ██║   ██║   ██║   ███████║
+   ██║   ██║   ██║   ██║   ██╔══██║
+   ██║   ╚██████╔╝   ██║   ██║  ██║
+   ╚═╝    ╚═════╝    ╚═╝   ╚═╝  ╚═╝
+
+     Transport Oriented to Hive
+
+$RESETCOLOR"
 
 # Crea la carpeta nodos y la carpeta user
 if [ -d nodos/ ] || [ -d user/ ];
