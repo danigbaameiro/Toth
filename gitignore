@@ -1,0 +1,7 @@
+# Ignorar el contenido de las carpetas log y cache
+files/nodeServer/chat-example/node_modules
+files/nodeServer/prueba/node_modules
+files/nodeServer/socket_chat/node_modules
+
+nodos/
+user/
