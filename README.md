@@ -54,7 +54,7 @@ sudo ./create_ap.sh
 
 Mostrará el siguiente menú: 
 
----------------------> imagen
+<img src="https://image.ibb.co/bMncQG/create_ap.png">
 
 Hay que iniciar antes de nada la opción " a) " para poder instalar los paquetes necesarios 
 para la creación de los puntos de acceso.
