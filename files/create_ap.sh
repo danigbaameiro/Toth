@@ -89,6 +89,21 @@ clean(){
   clear
 }
 
+helpMan(){
+  echo -e "\e[1;33m :::::::::::::::::::::::: HELP ::::::::::::::::::::::: \e[0m"
+  echo "Este script se encarga de crear los puntos de accesos en los nodos,"
+  echo "para ellos se usarán los siguientes comandos:"
+  echo "a) Instala los paquetes necesarios para la creación de puntos de"
+  echo "acceso."
+  echo "b) Muestra las interfaces wifi disponibles en ese momento."
+  echo "c) Crea un punto de acceso. Comprueba los que hay ya existentes, y"
+  echo "crea el nuevo AP con un SSID no existente, con cifrado WPA."
+  echo "d) Limpia los archivos generados en pasos anteriores, eliminándolos."
+  echo "e) Para salir de la ejecución del script."
+  echo "h) Muestra la ayuda"
+  echo -e "\e[1;33m ::::::::::::::::::::::::::::::::::::::::::::::::::::: \e[0m"
+}
+
 menu(){
   clear
   menu=0
@@ -100,6 +115,7 @@ menu(){
     echo -e "\e[0;31m c. Crear AP \e[0m"
     echo -e "\e[0;31m d. Limpiar \e[0m"
     echo -e "\e[0;31m e. Salir \e[0m"
+    echo -e "\e[0;31m h. Help \e[0m"
     echo -e "\e[1;31m==================================================== \e[0m"
     echo -e "\e[1;34m Elige una de las opciones anteriores: \e[0m"
     read menu_in
@@ -109,6 +125,7 @@ menu(){
       c) createAP ;;
       d) clean ;;
       e) echo "Hasta pronto" ;;
+      h) helpMan ;;
       *) echo No has introducido una de las opciones anteriores ;;
     esac
 
