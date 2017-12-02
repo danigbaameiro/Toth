@@ -25,7 +25,7 @@ El proceso de instalación se divide en varias fases:
 #### 1. Fase 1:
 Con esta fase buscamos desplegar todo el equipamiento necesario que tendrán tanto los usuarios de la red de telecomunicaciones como los drones. De tal forma que tras ejecutar el script solo habrá que copiar y pegar en los distintos dispositivos.
 
-<img src="https://ibb.co/mz8yzb">
+<img src="https://image.ibb.co/crJbkG/config.png">
 
 Ejecutaremos el script config.sh
 ```
