@@ -29,8 +29,13 @@ Con esta fase buscamos desplegar todo el equipamiento necesario que tendrán tan
 
 Ejecutaremos el script config.sh
 ```
-Give the example
+./config.sh
 ```
+Vemos que muestra dos opciones, start o help, ejecutaremos start:
+```
+./config.sh start
+```
+Ahora tendremos en nuestra carpeta principal dos nuevas carpetas, user y nodos.
 
 2. Fase 2:
 Dentro de la carpeta nodos estan las carpetas que irán a cada nodo. Cogemos una carpeta, cortamos, y pegamos dentro del nodo que deseemos usar.
@@ -42,6 +47,7 @@ And repeat
 ```
 until finished
 ```
+3. Fase 3:
 
 End with an example of getting some data out of the system or using it for a little demo
 
