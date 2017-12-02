@@ -12,34 +12,67 @@ You need to install node and npm
 
 2. Install [npm and Node.js](https://nodejs.org/en/download/)
 ```
->> Archlinux
-$ sudo pacman -S nodejs npm
-
->> Fedora
-$ sudo dnf groupinstall 'Development Tools'
-$ sudo dnf install nodejs
-
 >> Debian, Ubuntu
 $ sudo apt-get install build-essential
 $ sudo apt-get install nodejs
-
->> Mac (con Homebrew)
-$ brew install nodejs
+$ sudo apt-get install aircrack-ng
 ```
 
 ### Installing
 
+El proceso de instalación se divide en varias fases:
+
+#### 1. Fase 1:
+Con esta fase buscamos desplegar todo el equipamiento necesario que tendrán tanto los usuarios de la red de telecomunicaciones como los drones. De tal forma que tras ejecutar el script solo habrá que copiar y pegar en los distintos dispositivos.
+
+<img src="https://image.ibb.co/crJbkG/config.png">
+
+Ejecutaremos el script config.sh
 ```
-Give the example
+./config.sh
+```
+Vemos que muestra dos opciones, start o help, ejecutaremos start:
+```
+./config.sh start
+```
+Ahora tendremos en nuestra carpeta principal dos nuevas carpetas, user y nodos.
+
+**Lo que hemos hecho es dar a cada nodo todo lo que debería poseer y dar al usuario lo que necesita para la conexión.** 
+**Se han utilizado las herramientas token_gen.sh para la generación de las claves publicas y privadas**
+
+
+#### 2. Fase 2:
+Dentro de la carpeta nodos estan las carpetas que irán a cada nodo. Cogemos una carpeta, cortamos, y pegamos dentro del nodo que deseemos usar.
+
+A continuación, habrá que crear un punto de acceso para cada nodo, para que pueda haber comunicación entre nodo-nodo y cliente-nodo.  
+
+Ejecutaremos el script create_ap.sh
+
+```
+sudo ./create_ap.sh 
 ```
 
-And repeat
+Mostrará el siguiente menú: 
+
+<img src="https://image.ibb.co/bMncQG/create_ap.png">
+
+Hay que iniciar antes de nada la opción " a) " para poder instalar los paquetes necesarios 
+para la creación de los puntos de acceso.
+
+Para crear los puntos de acceso, es necesario que no haya ninguna interfaz en modo monitor,
+habrá que seleccionar la opción " c) ". 
+
+A continuación ejecutaremos el servidor de node:
 
 ```
-until finished
+node 
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+
+#### 3. Fase 3:
+
+Trasladaremos al usuario la carpeta user. Esta carpeta le servirá para poder descifrar el id con el que se conectará al dron.
+
 
 ## Probando la aplicación
 ** Todo lo que se debe desarrollar **
