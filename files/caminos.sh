@@ -1,9 +1,8 @@
 #!/bin/bash
 
-# ssid_origen json_origen
-# ssid_origen json_origen json_destino
+# json_origen
+# json_origen json_destino
 # salida a json_destino
-# primer parámetro ssid del nodo que lo envía para enviar el nuevo next
 # Si se envía un json es que en el nodo destino no existe ese camino y se incrementa en 1
 # Si se envían 2 json es que existen en ambos nodos y se compara cual es el menor + 1 y se guarda
 
@@ -56,22 +55,28 @@ case $1 in
     ;;
     *)
 
-    next=$1
 
-    dest1=`jq -M -r '.dest' <<< $2`
-    cost1=`jq -M -r '.cost' <<< $2`
-    next1=`jq -M -r '.next' <<< $2`
+    if [ ! -f "my_node" ]; then
+      echo "archivo my node no existe. Ejecutar create_ap"
+      exit
+    fi
 
-    if [[ -n "$3" ]]; then
-      dest2=`jq -M -r '.dest' <<< $3`
-      cost2=`jq -M -r '.cost' <<< $3`
-      next2=`jq -M -r '.next' <<< $3`
+    next=`grep nodo my_node`
+
+    dest1=`jq -M -r '.dest' <<< $1`
+    cost1=`jq -M -r '.cost' <<< $1`
+    next1=`jq -M -r '.next' <<< $1`
+
+    if [[ -n "$2" ]]; then
+      dest2=`jq -M -r '.dest' <<< $2`
+      cost2=`jq -M -r '.cost' <<< $2`
+      next2=`jq -M -r '.next' <<< $2`
       if [[ $dest1 -eq $dest2 ]]; then
         suma2
       else
         echo "error tiene que ser el destino igual"
       fi
-    elif [[ -z $3 ]]; then
+    elif [[ -z $2 ]]; then
       suma
     fi
 

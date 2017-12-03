@@ -46,6 +46,7 @@ nextNode(){
   number_next_node=$((number_last_node+1))
   #calculamos el siguiente nodo
   next_node="nodo${number_next_node}"
+  echo $next_node > my_node
 }
 createAP(){ #crear un punto de acceso
   findExistingNodes
