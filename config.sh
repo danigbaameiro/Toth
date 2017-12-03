@@ -61,7 +61,7 @@ function start {
 
 		cp ../files/create_ap.sh nodo$i/
 		mkdir nodo$i/nodeServer
-		cp ../files/nodeServer/* nodo$i/nodeServer
+		cp -r ../files/nodeServer/* nodo$i/nodeServer
 		cp ../files/conexion.sh nodo$i/
 		cp ../files/keyFolder/public_key.pem nodo$i/public_key_gen.pem
 		cp ../files/./token_gen.sh nodo$i/

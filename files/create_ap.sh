@@ -75,7 +75,7 @@ createAP(){ #crear un punto de acceso
   #cat interfaces_toth | grep "wlan" | sed -n 2p
   if [[ $interface_in == $interface_out ]]
   then
-    create_ap -n $interface_in $next_node Password_Wifi_Here
+    create_ap -n $interface_in $next_node 1234Cyber
   fi
 
 }
